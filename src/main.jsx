@@ -1,21 +1,25 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+// import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap';
 
+import store from './store/store.js'
 import { Layout } from './Layout.jsx'
+import AuthLayout from './components/AuthLayout.jsx'
 import Login from './components/Login/Login.jsx'
 import RegistrationForm from './components/Register/RegistrationForm.jsx'
+import PatientDashboard from './components/PatientDashboard/PatientDashboard.jsx'
 
 const router = createBrowserRouter([{
   path: "/",
-  element: <Layout />,
+  element: (<Layout />),
   children: [
     {
       path: '',
-      element: <App />
+      element: (<AuthLayout authentication={false}><PatientDashboard /></AuthLayout>)
     },
     {
       path: 'login',
@@ -27,13 +31,15 @@ const router = createBrowserRouter([{
     },
     {
       path: '/contact',
-      element: <div>Conatcts</div>
+      element: (<AuthLayout authentication={false}><div>Conatcts</div></AuthLayout>)
     }
   ]
 }])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 )

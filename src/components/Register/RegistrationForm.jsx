@@ -10,6 +10,7 @@ import {
   Container,
   Box
 } from "@mui/material";
+import { useApi} from '../../hooks/useApi';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -80,7 +81,7 @@ const RegistrationForm = () => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const allFieldsValid = Object.values(errors).every((err) => err === "");
     if (allFieldsValid) {
