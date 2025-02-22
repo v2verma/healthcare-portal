@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap';
 
 import { Layout } from './Layout.jsx'
+import Login from './components/Login/Login.jsx'
 
 const router = createBrowserRouter([{
   path: "/",
@@ -16,8 +17,8 @@ const router = createBrowserRouter([{
       element: <App />
     },
     {
-      path: 'health',
-      element: <div>health page coming soon..</div>
+      path: 'login',
+      element: <Login />
     },
     {
       path: '/service',
