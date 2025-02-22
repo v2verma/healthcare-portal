@@ -7,6 +7,7 @@ import 'bootstrap';
 
 import { Layout } from './Layout.jsx'
 import Login from './components/Login/Login.jsx'
+import RegistrationForm from './components/Register/RegistrationForm.jsx'
 
 const router = createBrowserRouter([{
   path: "/",
@@ -21,8 +22,8 @@ const router = createBrowserRouter([{
       element: <Login />
     },
     {
-      path: '/service',
-      element: <div>servce page coming soon..</div>
+      path: 'signup',
+      element: <RegistrationForm />
     },
     {
       path: '/contact',

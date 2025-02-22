@@ -43,7 +43,7 @@ const Login = () => {
 
   return (
     <Container maxWidth="xs">
-      <Box sx={{ mt: 8, p: 4, boxShadow: 3, borderRadius: 2, textAlign: "center" }}>
+      <Box sx={{ mt: 8, mb:2, p: 4, boxShadow: 3, borderRadius: 2, textAlign: "center" }}>
         <Typography variant="h5" gutterBottom>Login</Typography>
         <form onSubmit={handleLogin}>
           <TextField 
@@ -63,12 +63,12 @@ const Login = () => {
         </form>
 
         <Box sx={{ mt: 2, textAlign: "center" }}>
-          <Link href="#" onClick={() => navigate("/forgot-password")} underline="hover">
+          <Link onClick={() => navigate("/forgot-password")} underline="hover">
             Forgot Password?
           </Link>
           <Typography sx={{ mt: 1 }}>
             Don't have an account?{" "}
-            <Link href="#" onClick={() => navigate("/signup")} underline="hover">
+            <Link onClick={() => navigate("/signup")} underline="hover">
               Sign Up
             </Link>
           </Typography>
