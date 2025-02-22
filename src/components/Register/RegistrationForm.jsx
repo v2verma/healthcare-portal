@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TextField,
   Button,
@@ -11,6 +11,7 @@ import {
   Box
 } from "@mui/material";
 import { useApi} from '../../hooks/useApi';
+import axios from "axios";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +28,8 @@ const RegistrationForm = () => {
     state: "",
     zipCode: "",
   });
-
   const [errors, setErrors] = useState({});
+  const [error, setError] = useState(null);
 
   // Validate a single field
   const validateField = (name, value) => {
@@ -87,9 +88,20 @@ const RegistrationForm = () => {
     if (allFieldsValid) {
       console.log("Form Data Submitted:", formData);
       // Submit Data to Backend API
+      try{
+        const res = await axios.post("https://musical-winner-qvj694wp7q52xrjv-8080.app.github.dev/api/auth/register", formData)
+        console.log("POST", res)
+      }catch(error){
+        setErrors(error)
+      }
     }
   };
 
+  // useEffect(()=>{
+
+  // }, [data, isLoading, error, callApi])
+
+  console.log("TEST", data, isLoading,error)
   return (
     <Container maxWidth="sm">
     <Box sx={{ mt: 8, mb:2, p: 4, boxShadow: 3, borderRadius: 2, textAlign: "center" }}>
